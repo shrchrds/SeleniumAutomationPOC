@@ -32,10 +32,27 @@ time.sleep(1)
 # scroll down by 25% of the page
 driver.execute_script("window.scrollTo(0, document.body.scrollHeight * 0.25);")
 
-time.sleep(3)
+# find ip addresss
+checkID = driver.find_element(By.XPATH, "//input[@id='ipAddr']")
 
+# clear existing IP Address in text box
+checkID.clear()
+
+# take new IP Address from user
+ip_address = "49.36.51.24"
+
+# Enter IP Address in text box
+checkID.send_keys(ip_address)
+time.sleep(1)
+
+# Click on the 'Check IP Address' button
 driver.find_element(By.XPATH, "//button[normalize-space()='Check IP Address']").click()
 
-driver.execute_script("window.scrollTo(0, document.body.scrollHeight * 0.25);")
+# Scroll down by 25% of the page
+# driver.execute_script("window.scrollTo(0, document.body.scrollHeight * 0.25);")
+
+# Get new URL after clicking 'Check IP Address' button
+new_url = driver.current_url
+print(f"new URL after clicking 'Check IP Address' button: {new_url}")
 
 time.sleep(15)
